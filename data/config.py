@@ -1,23 +1,30 @@
-# api id, hash
-API_ID = 1488
-API_HASH = 'abcde1488'
+# API credentials
+API_ID = 1234  # Replace with your actual API ID
+API_HASH = 'BOTPROD!'  # Replace with your actual API Hash
 
+# Delays configuration
 DELAYS = {
-    'ACCOUNT': [5, 15],  # delay between connections to accounts (the more accounts, the longer the delay)
-    'TASK':  [5, 10],  # delay after complete task
+    'ACCOUNT': [5, 15],  # Delay between connections to accounts (more accounts = longer delay)
+    'TASK': [5, 10],  # Delay after completing a task
 }
 
+# Referral ID
+REF = 'iR4blXAGmd0CIEPNJ-5ts'  # Your referral ID
+
+# Proxy configuration
 PROXY = {
-    "USE_PROXY_FROM_FILE": False,  # True - if use proxy from file, False - if use proxy from accounts.json
-    "PROXY_PATH": "data/proxy.txt",  # path to file proxy
+    "USE_PROXY_FROM_FILE": False,  # True: use proxy from file, False: use proxy from accounts.json
+    "PROXY_PATH": "data/proxy.txt",  # Path to the proxy file
     "TYPE": {
-        "TG": "http",  # proxy type for tg client. "socks4", "socks5" and "http" are supported
-        "REQUESTS": "http"  # proxy type for requests. "http" for https and http proxys, "socks5" for socks5 proxy.
-        }
+        "TG": "http",  # Proxy type for Telegram client. Options: "socks4", "socks5", "http"
+        "REQUESTS": "http"  # Proxy type for requests. "http" for HTTP/HTTPS, "socks5" for SOCKS5
+    }
 }
 
-# session folder (do not change)
+# Directory for session files (do not change)
 WORKDIR = "sessions/"
 
-# timeout in seconds for checking accounts on valid
-TIMEOUT = 30
+# Timeout configuration
+TIMEOUT = 30  # Timeout in seconds for checking accounts validity
+
+SOFT_INFO = 'Fixed by botprod!'
