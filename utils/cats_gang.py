@@ -91,19 +91,24 @@ class CatsGang:
     async def logout(self):
         await self.session.close()
 
-    async def check_task(self, task_id: int) -> bool:
-        resp = await self.session.post(f'https://cats-backend-cxblew-prod.up.railway.app/tasks/{task_id}/check')
-        return (await resp.json()).get('completed', False)
+    async def check_task(self, task_id: int):
+        try:
+            resp = await self.session.post(f'https://cats-backend-cxblew-prod.up.railway.app/tasks/{task_id}/check')
+            return (await resp.json()).get('completed')
+        except:
+            return False
 
-    async def complete_task(self, task_id: int) -> bool:
-        resp = await self.session.post(f'https://cats-backend-cxblew-prod.up.railway.app/tasks/{task_id}/complete')
-        return (await resp.json()).get('success', False)
+    async def complete_task(self, task_id: int):
+        try:
+            resp = await self.session.post(f'https://cats-backend-cxblew-prod.up.railway.app/tasks/{task_id}/complete')
+            return (await resp.json()).get('success')
+        except:
+            return False
 
     async def get_tasks(self) -> Optional[List[dict]]:
         resp = await self.session.get('https://cats-backend-cxblew-prod.up.railway.app/tasks/user?group=cats')
         return (await resp.json()).get('tasks', None)
-
-    async def register(self) -> bool:
+    async def register(self):
         resp = await self.session.post(
             f'https://cats-backend-cxblew-prod.up.railway.app/user/create?referral_code={config.REF}'
         )
